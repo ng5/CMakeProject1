@@ -19,7 +19,7 @@ class spsc_queue {
 	static constexpr size_t usable_capacity = capacity;
 	bool enqueue(const T &item) noexcept {
 		size_t h = head_.load(std::memory_order_relaxed);
-		if (size_t t = tail_.load(std::memory_order_relaxed); (h - t) >= usable_capacity) {
+		if (size_t t = tail_.load(std::memory_order_acquire); (h - t) >= usable_capacity) {
 			return false;
 		}
 		ring_[h & mask] = item;
@@ -32,7 +32,7 @@ class spsc_queue {
 			return false;
 		}
 		out = ring_[t & mask];
-		tail_.store(t + 1, std::memory_order_relaxed);
+		tail_.store(t + 1, std::memory_order_release);
 		return true;
 	}
 
