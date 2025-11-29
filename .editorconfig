@@ -1,0 +1,5 @@
+[*.cmake]
+indent_style=space
+indent_size=2
+ij_cmake_keep_blank_lines_in_code=1
+ij_cmake_space_before_function_parentheses=false

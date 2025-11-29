@@ -1,0 +1,7 @@
+# clang-format default configuration
+BasedOnStyle: LLVM
+# Optional tweaks (keep minimal; remove if you want pure defaults)
+IndentWidth: 4
+TabWidth: 4
+UseTab: Always
+ColumnLimit: 0
